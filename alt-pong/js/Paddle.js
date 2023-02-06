@@ -7,9 +7,9 @@ class Paddle {
         this.score = 0;
     }
 
+    //function for use with keyboard/incrementing only
     move(amt) {
         this.pos.y += amt;
-        // this.pos.y = map(p1_pot, 0, 1023, 0, HEIGHT - 1);
         this.pos.y = constrain(this.pos.y, 10, height - 10 - this.h);
     }
 
@@ -21,7 +21,7 @@ class Paddle {
 
     grow() {
         if (this.h < 225) {
-            this.h += 25;
+            this.h += 50;
         }
     }
 
