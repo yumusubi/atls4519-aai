@@ -10,12 +10,12 @@ function preload() {
 
 function setup() {
 
-  alert('-> Use keys A,Z and K,M to move the paddles\n' +
-    '-> Press Spacebar to start each round, and R to reset the game\n' +
-    '-> Hit the ball and make your opponent miss to score!\n\n' +
-    'Good Luck!');
+  // alert('-> Use keys A,Z and K,M to move the paddles\n' +
+  //   '-> Press Spacebar to start each round, and R to reset the game\n' +
+  //   '-> Hit the ball and make your opponent miss to score!\n\n' +
+  //   'Good Luck!');
 
-  createCanvas(700, 400)
+  createCanvas(800, 400)
   ball = new Ball(width / 2, height / 2, 10, 10);
 
   p1 = new Paddle(20, height / 2 - 50, 10, 100);
@@ -38,7 +38,7 @@ function draw() {
   background(52);
   backdrop();
 
-  movePaddles();
+  // movePaddles();
   changePaddles();
   p1.show();
   p2.show();
@@ -112,14 +112,21 @@ function keyTyped() {
   return false;
 }
 
+function map(val, in_min, in_max, out_min, out_max) {
+  return int((val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)
+}
+
 function serialEvent() {
   //receive serial data here
   var data = serial.readLine();
   if (data === "") return;
   console.log(data);
-  // var array = string.split(',')
-  // console.log(array);
-
+  var array = data.split(',')
+  // console.log(array[1]);
+  p1.pos.y = map(array[0], 0, 255, 0, height - 1)
+  p1.pos.y = constrain(p1.pos.y, 10, height - 10 - p1.h);
+  p2.pos.y = map(array[1], 0, 255, 0, height - 1)
+  p2.pos.y = constrain(p2.pos.y, 10, height - 10 - p2.h);
 }
 
 function serverConnected() {
