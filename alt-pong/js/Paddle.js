@@ -21,13 +21,13 @@ class Paddle {
 
     grow() {
         if (this.h < 225) {
-            this.h += 3;
+            this.h += 25;
         }
     }
 
     shrink() {
         if (this.h > 15) {
-            this.h -= 3;
+            this.h -= 10;
         }
     }
 }
