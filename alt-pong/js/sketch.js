@@ -1,5 +1,8 @@
-let ball, p1, p2, retroFont;
+let ball, p1, p2, retroFont, p1Serial, p2Serial, b1Serial, b2Serial, b3Serial, b4Serial;
 let go = false;
+
+var serial; //variable to hold an instance of the serial port library
+var portName = 'COM3'; //fill in with YOUR port
 
 function preload() {
   retroFont = loadFont('ARCADECLASSIC.TTF');
@@ -17,14 +20,26 @@ function setup() {
 
   p1 = new Paddle(20, height / 2 - 50, 10, 100);
   p2 = new Paddle(width - 30, height / 2 - 50, 10, 100);
-}
 
+  serial = new p5.SerialPort(); //a new instance of serial port library
+
+  //set up events for serial communication
+  serial.on('connected', serverConnected);
+  serial.on('open', portOpen);
+  serial.on('data', serialEvent);
+  serial.on('error', serialError);
+  serial.on('close', portClose);
+
+  //open our serial port
+  serial.open(portName);
+}
 
 function draw() {
   background(52);
   backdrop();
 
   movePaddles();
+  changePaddles();
   p1.show();
   p2.show();
 
@@ -69,6 +84,18 @@ function movePaddles() {
   }
 }
 
+function changePaddles() {
+  // 83 = 's'
+  if (keyIsDown(83)) {
+    p1.grow();
+  }
+
+  // 88 = 'x'
+  if (keyIsDown(88)) {
+    p1.shrink();
+  }
+}
+
 function keyTyped() {
   if (key == ' ') {
     go = true;
@@ -83,4 +110,30 @@ function keyTyped() {
 
   // for safety
   return false;
+}
+
+function serialEvent() {
+  //receive serial data here
+  var data = serial.readLine();
+  if (data === "") return;
+  console.log(data);
+  // var array = string.split(',')
+  // console.log(array);
+
+}
+
+function serverConnected() {
+  console.log('connected to the server');
+}
+
+function portOpen() {
+  console.log('the serial port opened!');
+}
+
+function serialError(err) {
+  console.log('something went wrong with the port. ' + err);
+}
+
+function portClose() {
+  console.log('the port was closed');
 }
