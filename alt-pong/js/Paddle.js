@@ -18,5 +18,15 @@ class Paddle {
         rect(this.pos.x, this.pos.y, this.w, this.h);
     }
 
+    grow() {
+        if (this.h < 225) {
+            this.h += 3;
+        }
+    }
 
+    shrink() {
+        if (this.h > 15) {
+            this.h -= 3;
+        }
+    }
 }
