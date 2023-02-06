@@ -21,7 +21,7 @@ There are many flaws with this game plan already, but since I personally think t
   - Decrease paddle size
 - [x] Use serial I/O to connect RedBoard inputs to p5.js pong
 - [x] Control the paddle location with the horizontal slide potentiometer
-- [ ] Control paddle sizes using momentary buttons to close the circuit
+- [x] Control paddle sizes using momentary buttons to close the circuit
 - [ ] Fit the buttons into "proper" game enclosures
   - [ ] Modify a manual balloon inflator to actuate a button press
   - [ ] Build out an enclosure for a metal stake to poke a button (or build a switch using tinfoil)
