@@ -1,4 +1,4 @@
-let ball, p1, p2, retroFont, p1Serial, p2Serial, b1Serial, b2Serial, b3Serial, b4Serial;
+let ball, p1, p2, retroFont, b1, b2, b3, b4, comp1, comp2, comp3, comp4;
 let go = false;
 
 var serial; //variable to hold an instance of the serial port library
@@ -32,6 +32,12 @@ function setup() {
 
   //open our serial port
   serial.open(portName);
+
+  //set comparison triggers to true
+  comp1 = true;
+  comp2 = true;
+  comp3 = true;
+  comp4 = true;
 }
 
 function draw() {
@@ -85,14 +91,44 @@ function movePaddles() {
 }
 
 function changePaddles() {
-  // 83 = 's'
-  if (keyIsDown(83)) {
+  // // 83 = 's'
+  // if (keyIsDown(83)) {
+  //   p1.grow();
+  // }
+
+  // // 88 = 'x'
+  // if (keyIsDown(88)) {
+  //   p1.shrink();
+  // }
+
+  // if button released, reset trigger
+  if (b1 == 0)
+    comp1 = true;
+  if (b2 == 0)
+    comp2 = true;
+  if (b3 == 0)
+    comp3 = true;
+  if (b4 == 0)
+    comp4 = true;
+
+  // player 1 button actions
+  if ((b1 == 1) && (comp1)) {
     p1.grow();
+    comp1 = false;
+  }
+  if ((b2 == 1) && (comp2)) {
+    p2.shrink();
+    comp2 = false;
   }
 
-  // 88 = 'x'
-  if (keyIsDown(88)) {
+  // player 2 button actions
+  if ((b3 == 1) && (comp3)) {
+    p2.grow();
+    comp3 = false;
+  }
+  if ((b4 == 1) && (comp4)) {
     p1.shrink();
+    comp4 = false;
   }
 }
 
@@ -123,10 +159,18 @@ function serialEvent() {
   console.log(data);
   var array = data.split(',')
   // console.log(array[1]);
+
+  // map potentiometers to paddles
   p1.pos.y = map(array[0], 0, 255, 0, height - 1)
   p1.pos.y = constrain(p1.pos.y, 10, height - 10 - p1.h);
   p2.pos.y = map(array[1], 0, 255, 0, height - 1)
   p2.pos.y = constrain(p2.pos.y, 10, height - 10 - p2.h);
+
+  // set button states
+  b1 = parseInt(array[2]);
+  b2 = parseInt(array[3]);
+  b3 = parseInt(array[4]);
+  b4 = parseInt(array[5]);
 }
 
 function serverConnected() {
