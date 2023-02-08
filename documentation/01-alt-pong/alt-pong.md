@@ -2,6 +2,9 @@
 
 ## Overview
 
+- [Link to Demo (requires Arduino Uno/Redboard for serial input)]()
+- [Link to code repo]()
+
 ### Proposal
 
 After much brainstorming on how to create a new and unique experience to playing pong, I realized a couple of things:
@@ -22,9 +25,9 @@ There are many flaws with this game plan already, but since I personally think t
 - [x] Use serial I/O to connect RedBoard inputs to p5.js pong
 - [x] Control the paddle location with the horizontal slide potentiometer
 - [x] Control paddle sizes using momentary buttons to close the circuit
-- [ ] Fit the buttons into "proper" ~~improper~~ game enclosures
-  - [ ] Modify a manual balloon inflator to actuate a button press
-  - [ ] Build out an enclosure for a metal stake to poke a button (or build a switch using tinfoil, maybe even a bigass button that just says 'POP' it)
+- [x] Fit the buttons into "proper" ~~improper~~ game enclosures
+  - [x] Modify a manual balloon inflator to actuate a button press
+  - [x] Build out an enclosure for a metal stake to poke a button (or build a switch using tinfoil, maybe even a bigass button that just says 'POP' it)
 
 ### Stretch Goals
 
@@ -34,7 +37,22 @@ There are many flaws with this game plan already, but since I personally think t
 
 ## Progress
 
+### Code
+
+After finding the p5.js sketch for two player code from ARatherLongUsername, it was a matter of picking apart the different objects and adding a couple functions here and there.
+
+- Mapping the potentiometer and removing the keyboard input for paddle control
+- Set new functions to the two buttons to grow and shrink the paddle sizes
+
+### Circuit
+
+Using a redboard to control input, I was able to transfer input to p5.js through serial i/o.
+
+![schematic of the circuit](img/Schematic_alt-pong.png)
+
 ## TL;DR
+
+She's janky but she works.
 
 ---
 
