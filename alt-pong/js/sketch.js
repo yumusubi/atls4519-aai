@@ -102,31 +102,31 @@ function changePaddles() {
   // }
 
   // if button released, reset trigger
-  if (b1 == 0)
+  if (b1 == 1)
     comp1 = true;
-  if (b2 == 0)
+  if (b2 == 1)
     comp2 = true;
-  if (b3 == 0)
+  if (b3 == 1)
     comp3 = true;
-  if (b4 == 0)
+  if (b4 == 1)
     comp4 = true;
 
   // player 1 button actions
-  if ((b1 == 1) && (comp1)) {
+  if ((b1 == 0) && (comp1)) {
     p1.grow();
     comp1 = false;
   }
-  if ((b2 == 1) && (comp2)) {
+  if ((b2 == 0) && (comp2)) {
     p2.shrink();
     comp2 = false;
   }
 
   // player 2 button actions
-  if ((b3 == 1) && (comp3)) {
+  if ((b3 == 0) && (comp3)) {
     p2.grow();
     comp3 = false;
   }
-  if ((b4 == 1) && (comp4)) {
+  if ((b4 == 0) && (comp4)) {
     p1.shrink();
     comp4 = false;
   }
