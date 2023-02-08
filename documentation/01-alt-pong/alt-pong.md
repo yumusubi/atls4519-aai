@@ -2,8 +2,8 @@
 
 ## Overview
 
-- [Link to Demo (requires Arduino Uno/Redboard for serial input)]()
-- [Link to code repo]()
+- [Link to Demo (requires Arduino Uno/Redboard for serial input)](https://cnakpil.github.io/atls4519-aai/alt-pong/)
+- [Link to code repo](https://github.com/cnakpil/atls4519-aai/tree/main/alt-pong)
 
 ### Proposal
 
