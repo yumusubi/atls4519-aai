@@ -15,7 +15,7 @@ function setup() {
   //   '-> Hit the ball and make your opponent miss to score!\n\n' +
   //   'Good Luck!');
 
-  createCanvas(800, 400)
+  createCanvas(700, 400)
   ball = new Ball(width / 2, height / 2, 10, 10);
 
   p1 = new Paddle(20, height / 2 - 50, 10, 100);

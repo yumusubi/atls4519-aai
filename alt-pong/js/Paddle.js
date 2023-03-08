@@ -27,7 +27,7 @@ class Paddle {
 
     shrink() {
         if (this.h > 15) {
-            this.h -= 10;
+            this.h -= 15;
         }
     }
 }
