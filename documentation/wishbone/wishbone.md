@@ -1,4 +1,4 @@
-# Alt Pong - BLOON PONG
+# Wishbone
 
 ## Overview
 
@@ -14,6 +14,11 @@ After Gray and I brainstormed over 50 ideas, our biggest barrier was "how do you
 **Partner:** Gray Assi
 
 **My role:** Programmer
+
+### Must-Use Items
+
+- Garden shears
+- Bungee cords
 
 ### Tools
 
